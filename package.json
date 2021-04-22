@@ -16,7 +16,6 @@
     "affected:test": "nx affected:test",
     "affected:lint": "nx affected:lint",
     "affected:dep-graph": "nx affected:dep-graph",
-    "affected": "nx affected",
     "format": "nx format:write",
     "format:write": "nx format:write",
     "format:check": "nx format:check",

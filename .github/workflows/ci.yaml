@@ -1,0 +1,31 @@
+name: CI
+on: [push]
+jobs:
+  continuous-integration:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout Source Code
+
+      - uses: actions/setup-node@v2
+        name: Install Node
+        with:
+          node-version: '14'
+
+      - uses: actions/cache@v2
+        name: Setup Caches
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - run: yarn install
+        name: Install Depedencies
+
+      - run: yarn affected:test
+        name: Unit Tests
+
+      - run: yarn affected:e2e
+        name: End-to-End Tests
+
+      - run: yarn affected:build
+        name: Build Outputs
