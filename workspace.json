@@ -265,11 +265,74 @@
         }
       }
     },
+    "angular-auth0": {
+      "projectType": "library",
+      "root": "libs/angular-auth0",
+      "sourceRoot": "libs/angular-auth0/src",
+      "prefix": "uplift",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/angular-auth0/tsconfig.lib.json",
+            "project": "libs/angular-auth0/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/angular-auth0/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/angular-auth0/src/**/*.ts",
+              "libs/angular-auth0/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/angular-auth0"
+          ],
+          "options": {
+            "jestConfig": "libs/angular-auth0/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "react-auth0": {
       "root": "libs/react-auth0",
       "sourceRoot": "libs/react-auth0/src",
       "projectType": "library",
       "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/react-auth0",
+            "tsConfig": "libs/react-auth0/tsconfig.lib.json",
+            "project": "libs/react-auth0/package.json",
+            "entryFile": "libs/react-auth0/src/index.ts",
+            "external": [
+              "react",
+              "react-dom"
+            ],
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "libs/react-auth0/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
@@ -290,28 +353,26 @@
         }
       }
     },
-    "angular-auth0": {
+    "auth0": {
+      "root": "libs/auth0",
+      "sourceRoot": "libs/auth0/src",
       "projectType": "library",
-      "root": "libs/angular-auth0",
-      "sourceRoot": "libs/angular-auth0/src",
-      "prefix": "uplift",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/angular-auth0/src/**/*.ts",
-              "libs/angular-auth0/src/**/*.html"
+              "libs/auth0/**/*.ts"
             ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
           "outputs": [
-            "coverage/libs/angular-auth0"
+            "coverage/libs/auth0"
           ],
           "options": {
-            "jestConfig": "libs/angular-auth0/jest.config.js",
+            "jestConfig": "libs/auth0/jest.config.js",
             "passWithNoTests": true
           }
         }
