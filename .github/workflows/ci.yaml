@@ -21,6 +21,9 @@ jobs:
       - run: yarn install
         name: Install Depedencies
 
+      - run: yarn cypress install
+        name: Installing Cypress Binary
+
       - run: yarn affected:test --all
         name: Unit Tests
 
