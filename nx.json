@@ -1,27 +1,26 @@
 {
-  "npmScope": "uplift",
-  "affected": {
-    "defaultBase": "master"
-  },
   "implicitDependencies": {
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     ".eslintrc.json": "*"
   },
+  "affected": { "defaultBase": "main" },
+  "npmScope": "uplift",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
-      }
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
     }
   },
-  "projects": {}
+  "projects": {
+    "react-portal": { "tags": [] },
+    "react-portal-e2e": {
+      "tags": [],
+      "implicitDependencies": ["react-portal"]
+    },
+    "angular-portal": { "tags": [] },
+    "angular-portal-e2e": {
+      "tags": [],
+      "implicitDependencies": ["angular-portal"]
+    }
+  }
 }

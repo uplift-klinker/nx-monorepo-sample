@@ -1,10 +1,269 @@
 {
-  
-  
   "version": 2,
-  
-  "projects": {},
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/react"
+  },
+  "defaultProject": "react-portal",
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "scss",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "scss"
+      },
+      "library": {
+        "style": "scss",
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "projects": {
+    "react-portal": {
+      "root": "apps/react-portal",
+      "sourceRoot": "apps/react-portal/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/react-portal",
+            "index": "apps/react-portal/src/index.html",
+            "main": "apps/react-portal/src/main.tsx",
+            "polyfills": "apps/react-portal/src/polyfills.ts",
+            "tsConfig": "apps/react-portal/tsconfig.app.json",
+            "assets": [
+              "apps/react-portal/src/favicon.ico",
+              "apps/react-portal/src/assets"
+            ],
+            "styles": [
+              "apps/react-portal/src/styles.scss"
+            ],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/react-portal/src/environments/environment.ts",
+                  "with": "apps/react-portal/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "react-portal:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "react-portal:build:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/react-portal/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/react-portal"
+          ],
+          "options": {
+            "jestConfig": "apps/react-portal/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "react-portal-e2e": {
+      "root": "apps/react-portal-e2e",
+      "sourceRoot": "apps/react-portal-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/react-portal-e2e/cypress.json",
+            "tsConfig": "apps/react-portal-e2e/tsconfig.e2e.json",
+            "devServerTarget": "react-portal:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "react-portal:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/react-portal-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    },
+    "angular-portal": {
+      "projectType": "application",
+      "root": "apps/angular-portal",
+      "sourceRoot": "apps/angular-portal/src",
+      "prefix": "uplift",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/angular-portal",
+            "index": "apps/angular-portal/src/index.html",
+            "main": "apps/angular-portal/src/main.ts",
+            "polyfills": "apps/angular-portal/src/polyfills.ts",
+            "tsConfig": "apps/angular-portal/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/angular-portal/src/favicon.ico",
+              "apps/angular-portal/src/assets"
+            ],
+            "styles": [
+              "apps/angular-portal/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/angular-portal/src/environments/environment.ts",
+                  "with": "apps/angular-portal/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "angular-portal:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-portal:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "angular-portal:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/angular-portal/src/**/*.ts",
+              "apps/angular-portal/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/angular-portal"
+          ],
+          "options": {
+            "jestConfig": "apps/angular-portal/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "angular-portal-e2e": {
+      "root": "apps/angular-portal-e2e",
+      "sourceRoot": "apps/angular-portal-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/angular-portal-e2e/cypress.json",
+            "tsConfig": "apps/angular-portal-e2e/tsconfig.e2e.json",
+            "devServerTarget": "angular-portal:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-portal:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/angular-portal-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    }
   }
 }
