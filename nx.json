@@ -21,6 +21,8 @@
     "angular-portal-e2e": {
       "tags": [],
       "implicitDependencies": ["angular-portal"]
-    }
+    },
+    "react-auth0": { "tags": [] },
+    "angular-auth0": { "tags": [] }
   }
 }
