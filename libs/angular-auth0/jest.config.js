@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: "angular-auth0",
+  displayName: "@uplift/angular-auth0",
   preset: "../../jest.preset.js",
   setupFilesAfterEnv: ["<rootDir>/src/test-setup.ts"],
   globals: {

@@ -2,7 +2,7 @@ import createAuth0Client, {Auth0Client} from '@auth0/auth0-spa-js';
 import {AuthConfig} from './auth-config';
 import {
     AuthIdToken,
-    AuthorizeUrlSettings,
+    BuildAuthorizeUrlSettings,
     AuthToken,
     AuthUser,
     BuildLogoutUrlSettings,
@@ -20,7 +20,7 @@ import {
 import {Auth0ClientCreator} from './auth0-client-creator';
 
 export interface AuthClient {
-    buildAuthorizeUrl(options?: AuthorizeUrlSettings): Promise<string>;
+    buildAuthorizeUrl(options?: BuildAuthorizeUrlSettings): Promise<string>;
 
     loginWithPopup(options?: LoginWithPopupSettings, config?: PopupConfigSettings): Promise<void>;
 
@@ -50,7 +50,7 @@ class UpliftAuthClient implements AuthClient {
 
     }
 
-    async buildAuthorizeUrl(options?: AuthorizeUrlSettings): Promise<string> {
+    async buildAuthorizeUrl(options?: BuildAuthorizeUrlSettings): Promise<string> {
         return await this.auth0Client.buildAuthorizeUrl(options);
     }
 

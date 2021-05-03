@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: "angular-portal",
+  displayName: "@uplift/angular-portal",
   preset: "../../jest.preset.js",
   setupFilesAfterEnv: ["<rootDir>/src/test-setup.ts"],
   globals: {

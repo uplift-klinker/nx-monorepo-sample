@@ -1,7 +1,7 @@
 import {
     AuthClient,
     AuthIdToken,
-    AuthorizeUrlSettings,
+    BuildAuthorizeUrlSettings,
     AuthToken,
     AuthUser,
     BuildLogoutUrlSettings,
@@ -18,7 +18,7 @@ import {
 } from '@uplift/auth0';
 
 export class TestingAuthClient implements AuthClient {
-    buildAuthorizeUrl(options?: AuthorizeUrlSettings): Promise<string> {
+    buildAuthorizeUrl(options?: BuildAuthorizeUrlSettings): Promise<string> {
         return Promise.resolve('');
     }
 

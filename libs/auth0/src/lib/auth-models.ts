@@ -9,7 +9,7 @@ import {
     RedirectLoginResult
 } from '@auth0/auth0-spa-js';
 
-export interface AuthorizeUrlSettings extends RedirectLoginOptions {
+export interface BuildAuthorizeUrlSettings extends RedirectLoginOptions {
 
 }
 

@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'react-portal',
+  displayName: '@uplift/react-portal',
   preset: '../../jest.preset.js',
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nrwl/react/plugins/jest',

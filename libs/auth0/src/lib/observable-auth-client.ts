@@ -5,7 +5,7 @@ import {Observable, of} from 'rxjs';
 import {fromPromise} from 'rxjs/internal-compatibility';
 import {
     AuthIdToken,
-    AuthorizeUrlSettings, AuthToken,
+    BuildAuthorizeUrlSettings, AuthToken,
     AuthUser, BuildLogoutUrlSettings, CheckSessionSettings,
     GetAuthUserSettings, GetIdTokenSettings, GetTokenSilentlySettings, GetTokenWithPopupSettings,
     LoginWithPopupSettings, LoginWithRedirectResult, LoginWithRedirectSettings, LogoutSettings,
@@ -14,7 +14,7 @@ import {
 import {map} from 'rxjs/operators';
 
 export interface ObservableAuthClient {
-    buildAuthorizeUrl(options?: AuthorizeUrlSettings): Observable<string>;
+    buildAuthorizeUrl(options?: BuildAuthorizeUrlSettings): Observable<string>;
 
     loginWithPopup(options?: LoginWithPopupSettings, config?: PopupConfigSettings): Observable<void>;
 
@@ -43,7 +43,7 @@ class UpliftObservableAuthClient implements ObservableAuthClient{
     constructor(private readonly client: Auth0Client) {
     }
 
-    buildAuthorizeUrl(options?: AuthorizeUrlSettings): Observable<string> {
+    buildAuthorizeUrl(options?: BuildAuthorizeUrlSettings): Observable<string> {
         return fromPromise(this.client.buildAuthorizeUrl(options));
     }
 

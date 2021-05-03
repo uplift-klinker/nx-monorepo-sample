@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'react-auth0',
+  displayName: '@uplift/react-auth0',
   preset: '../../jest.preset.js',
   transform: {
     '^.+\\.[tj]sx?$': 'babel-jest'

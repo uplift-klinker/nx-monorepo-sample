@@ -28,6 +28,9 @@
       ],
       "@uplift/auth0": [
         "libs/auth0/src/index.ts"
+      ],
+      "@uplift/auth0/testing": [
+        "libs/auth0/testing/index.ts"
       ]
     }
   },

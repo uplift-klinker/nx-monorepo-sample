@@ -1,5 +1,5 @@
 module.exports = {
-    displayName: 'auth0',
+    displayName: '@uplift/auth0',
     preset: '../../jest.preset.js',
     globals: {
         'ts-jest': {
