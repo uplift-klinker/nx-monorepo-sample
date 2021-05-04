@@ -11,5 +11,5 @@ module.exports = {
     },
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
     coverageDirectory: '../../coverage/libs/auth0',
-    setupFilesAfterEnv: ['<rootDir>/src/testing/setup-tests.ts']
+    setupFilesAfterEnv: ['<rootDir>/testing/setup-tests.ts']
 };
